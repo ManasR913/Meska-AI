@@ -1,0 +1,17 @@
+Terminal Commands:
+
+---
+.\venv\Scripts\Activate      - enter venv
+deactivate                  - leave venv
+
+--- pulling
+git pull origin main
+
+--- pushing
+git status                  
+git add . (replace "." with the file name for specific files)
+git status
+git commit -m "msg"
+git push origin main
+
+
