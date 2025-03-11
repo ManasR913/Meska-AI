@@ -15,3 +15,8 @@ git commit -m "msg"
 git push origin main
 
 
+--- file run (cd src first)
+python [filename]
+python3 [filename]
+
+
