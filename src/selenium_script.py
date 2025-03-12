@@ -3,32 +3,42 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 import pandas as pd
 
 # Set up Chrome options
 chrome_options = Options()
-chrome_options.add_argument("--headless")  # Run in headless mode
+chrome_options.add_argument("--headless")  # Run in headless mode (Remove this if you want to see the browser)
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 
-# Set up WebDriver (Update path to chromedriver if necessary)
-service = Service("chromedriver")
+# ✅ Set up WebDriver (Make sure chromedriver.exe path is correct)
+chrome_driver_path = r"..\chromedriver.exe"
+service = Service(chrome_driver_path)
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
-# D.R. Horton website URL
+# ✅ Open D.R. Horton website
 driver.get("https://www.drhorton.com/")
 time.sleep(3)  # Allow time for page to load
 
-# Search for homes in a specific location
-search_box = driver.find_element(By.NAME, "search-field")  # Update selector if needed
-search_box.send_keys("Texas")  # Example search
-search_box.send_keys(Keys.RETURN)
-time.sleep(5)
+# ✅ Search for homes in Austin
+try:
+    search_box = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "search-site"))  # Updated to use correct ID
+    )
+    search_box.send_keys("Austin")
+    search_box.send_keys(Keys.RETURN)
+    time.sleep(5)  # Allow search results to load
+except Exception as e:
+    print(f"Search box not found or interaction failed: {e}")
+    driver.quit()
+    exit()
 
-# Extract home details
+# ✅ Extract home details
 properties = []
-home_cards = driver.find_elements(By.CLASS_NAME, "property-card")  # Update selector
+home_cards = driver.find_elements(By.CLASS_NAME, "property-card")  # Update selector if needed
 
 for home in home_cards:
     try:
@@ -40,7 +50,7 @@ for home in home_cards:
         print(f"Error extracting property: {e}")
         continue
 
-# Save results to CSV
+# ✅ Save results to CSV
 if properties:
     df = pd.DataFrame(properties)
     df.to_csv("drhorton_home_prices.csv", index=False)
@@ -48,5 +58,5 @@ if properties:
 else:
     print("No listings found.")
 
-# Close WebDriver
+# ✅ Close WebDriver
 driver.quit()
