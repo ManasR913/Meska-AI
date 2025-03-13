@@ -23,7 +23,7 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.get("https://www.drhorton.com/")
 time.sleep(3)  # Allow time for page to load
 
-# ✅ Search for homes in Austin
+# ✅ Search for homes in Austin     
 try:
     search_box = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.ID, "search-site"))  # Updated to use correct ID
