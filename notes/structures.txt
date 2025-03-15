@@ -1,0 +1,83 @@
+Dr Horton Call for Info Structure:
+
+
+Dr Horton Info Structure:
+<div class="coveo-list-layout CoveoResult">
+            <!-- If you get an "Unexpected Token <" issue on this line with SXA, refer to: https://docs.coveo.com/en/2098/ -->
+            
+<a href="/texas/killeen-temple-waco/copperas-cove/creekside-hills" class="CoveoResultLink" tabindex="0">
+	<div class="home-info community">
+		
+		<div class="home-image" style="background-image: url('/-/media/drhorton/productcatalog/278-north-central-texas/27936-creekside-hills/279360000-creekside-express/exterior.jpg?sc=1&amp;thn=1&amp;w=336&amp;rev=2d1f3bfd22e6475cb3bcaf3cd09fd0cd&amp;hash=74BA68A764ADC8E7B68149952327B92D')">
+		</div>
+		
+	<!-- /community-home -->
+		<div class="info-frame">
+			<div class="home-info__community-status">
+				<span class="home-info__community-status-color" style="background: #01af53"> </span>
+				<span>Now Selling</span>
+			</div>
+			<div class="title CoveoResultTitle">
+				<h2>Creekside Hills</h2>
+			</div>
+			<!--<div id="home-brand">
+			<div class="brand-name">Express Series℠<sup>SM</sup></div>
+		</div>-->
+			<!-- /home-brand -->
+			
+			<div class="home-info__address">
+				
+				Copperas Cove,
+				
+				TX 76522
+			</div>
+			
+			
+			<div class="home-info__from">
+				From the 
+				
+				$255s
+				
+			</div>
+			
+			
+			<div class="home-info__stats">
+						
+					3
+					-
+					4
+					bed <span class="vert-divider">|</span>
+				
+				
+					2
+					
+					bath <span class="vert-divider">|</span>
+				
+				
+					2
+					
+					garage <span class="vert-divider">|</span>
+				
+				
+					1
+					
+					story
+				
+				
+			</div>
+			
+			<div class="home-info__square-foot">
+				From
+				
+				 1,263 
+				sq. ft.
+			</div>
+			
+			
+			<div class="home-info__available-homes"><object><a href="/texas/killeen-temple-waco/copperas-cove/creekside-hills#relatedmovein" class="CoveoResultLink" tabindex="0">11 available homes</a></object></div>
+			
+		</div>
+	</div>
+</a><!-- /home-info -->
+        </div>
+

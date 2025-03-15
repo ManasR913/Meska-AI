@@ -1,0 +1,8 @@
+scrape based on specific website update frequency
+
+zip codes used for search radius
+
+graphs for feature trendline
+
+do a trendline of value for plots over time trendline
+
