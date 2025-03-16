@@ -13,6 +13,7 @@ driver = webdriver.Chrome(service=service)
 
 driver.get("https://www.drhorton.com//texas")
 
+# explicit wait for links to  show up
 try:
     element = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.ID, "myDynamicElement"))
