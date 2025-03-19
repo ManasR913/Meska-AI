@@ -5,10 +5,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-# import pandas as pd
-# import ace_tools as tools
+import pandas as pd
 import time
-
+import re
 
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
@@ -27,13 +26,48 @@ try:
 except: 
     print(f"Links not found")
 
-#get webpage title
-print(driver.title)
+for link in available_home_links:
+    driver.get(link)
+    
+    try:
+        # Wait for community-secondary-info section to load
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "community-secondary-info"))
+        )
+    except:
+        print("nothing found here")
+        break
+    
+    link_address = driver.find_element(By.XPATH, "//a[@id='directions']").text.strip()
 
-print(link_elements[0])
+    print(link_address)
 
-# we want to extract the links themselves into a separate list make a new list called linksAH
+    # parse this string into city, state, zipcode omit model home address for now
 
+    # Define a regex pattern for "Street Address, City, State ZIP"
+    pattern = r"^(.*?),\s*([\w\s]+),\s*([A-Z]{2})\s*(\d{5})$"
+
+    # Apply regex
+    match = re.match(pattern, link_address)
+
+    if match:
+        modelHomeAddress = match.group(1)  # Extract model home address
+        city = match.group(2)  # Extract city
+        state = match.group(3)  # Extract state
+        zip_code = match.group(4)  # Extract ZIP code
+    else:
+        print("Address format not recognized")
+
+    try:
+        available_homes_section = driver.find_element(By.ID, "available-homes")
+    except:
+        print("available_homes_section not found")
+    
+    try:
+        toggle_items = available_homes_section.find_elements(By.CLASS_NAME, "toggle-item")
+        print(f"✅ Found {len(toggle_items)} toggle-item containers")
+    except:
+        print("could not create toggle-items list")
 
 
 time.sleep(5)
