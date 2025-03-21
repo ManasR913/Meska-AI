@@ -8,9 +8,13 @@ from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 import time
 import re
+import undetected_chromedriver as uc
 
-service = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=service)
+
+# service = Service(ChromeDriverManager().install())
+# driver = webdriver.Chrome(service=service)
+
+driver = uc.Chrome()
 
 driver.get("https://www.drhorton.com//texas")
 
@@ -36,7 +40,7 @@ for link in available_home_links:
         )
     except:
         print("nothing found here")
-        break
+        time.sleep()
     
     link_address = driver.find_element(By.XPATH, "//a[@id='directions']").text.strip()
 
