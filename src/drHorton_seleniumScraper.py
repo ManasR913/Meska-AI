@@ -72,7 +72,14 @@ for link in available_home_links:
         print(f"✅ Found {len(toggle_items)} toggle-item containers")
     except:
         print("could not create toggle-items list")
-
+try:
+    next_button = driver.find_element(By.XPATH, "//button[contains(@class, 'pagination__button') and @data-page-id]")
+    driver.execute_script("arguments[0].click();", next_button)  # Click next button
+    print("🔄 Moving to next page...")
+    time.sleep(3)  # Wait for new page to load
+except:
+    print("🚫 No more pages found. Exiting loop.")
+     
 
 time.sleep(5)
 
