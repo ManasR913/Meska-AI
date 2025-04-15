@@ -11,10 +11,15 @@ import re
 import undetected_chromedriver as uc
 
 
+# ---------------------------------------------------
+# vvv old chrome driver vvv
 # service = Service(ChromeDriverManager().install())
 # driver = webdriver.Chrome(service=service)
+# ---------------------------------------------------
 
 driver = uc.Chrome()
+
+# get dr horton page
 
 driver.get("https://www.drhorton.com//texas")
 
@@ -29,6 +34,8 @@ try:
     available_home_links = [element.get_attribute("href") for element in link_elements]
 except: 
     print(f"Links not found")
+
+
 
 for link in available_home_links:
     driver.get(link)
